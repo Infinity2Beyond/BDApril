@@ -535,9 +535,22 @@ body {
     border-right: 3px solid var(--color-border);
 }
 
-.content__letter .left #heart__letter{
+.content__letter .left #heart__letter {
     opacity: 0;
     width: 100%;
+    height: 100%;        /* Đảm bảo chiều cao lấp đầy khung trái */
+    object-fit: contain; /* Giúp ảnh tự co giãn để lọt lòng khung, không bị méo/tràn */
+}
+
+/* Đồng thời kiểm tra phần khung chứa bên trái */
+.letter__border .letter .content__letter .left {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    padding: 1.7rem;
+    border-right: 3px solid var(--color-border);
+    display: flex;       /* Thêm dòng này */
+    align-items: center; /* Thêm dòng này để căn giữa ảnh theo chiều dọc */
 }
 
 #heart__letter.animationOp{
@@ -564,7 +577,12 @@ body {
 .content__letter .left .heart_4{ top: 140px; right: 35px; }
 
 .content__letter .right{ position: relative; width: 50%; }
-.content__letter .right .love__img{ opacity: 0; position: absolute; right: 20px; top: -100px; }
+.content__letter .right .love__img {
+    opacity: 0;
+    position: absolute;
+    right: 20px;
+    top: -120px; /* Đã đẩy lên cao hơn để không đè vào chữ */
+}
 .love__img.animationOp{ animation: opacityHeart 1s 1s forwards; }
 
 .content__letter .right .text__letter{
